@@ -3,22 +3,22 @@
  
     <div class="row">
     <p>
-      <label for="firstname">First Name :    </label>
-      <input type="text" id="firstname" name="firstname" ngModel>
+      <label for="firstName">First Name :    </label>
+      <input type="text" id="firstName" name="firstName" ngModel>
     </p>
    
     <p>
-      <label for="lastname">Last Name :</label>
-      <input type="text" id="lastname" name="lastname" ngModel>
+      <label for="lastName">Last Name :</label>
+      <input type="text" id="lastName" name="lastName" ngModel>
     </p>
 </div>
     <p>
-        <label for="employyeeno">Employee No</label>
-        <input type="text" id="employeeno" name="employyeeno" ngModel>
+        <label for="employyeeNo">Employee No</label>
+        <input type="text" id="employyeeNo" name="employyeeNo" ngModel>
     </p>
     <p>
-        <label for="toatlgems">Tota Gems</label>
-        <input type="text" id="toatlgems" name="toatlgems" ngModel>
+        <label for="toatlGems">Tota Gems</label>
+        <input type="text" id="toatlGems" name="toatlGems" ngModel>
     </p>
     <p>
         <label for="reason">Reason</label>
@@ -54,13 +54,13 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let detail of registrationDetails;">
-                        <td> {{detail.firstname}}</td>
-                        <td> {{detail.lastname}}</td>
-                        <td> {{detail.employyeeno}}</td>
-                        <td> {{detail.toatlgems}}</td>
+                        <td> {{detail.firstName}}</td>
+                        <td> {{detail.lastName}}</td>
+                        <td> {{detail.employyeeNo}}</td>
+                        <td> {{detail.toatlGems}}</td>
                         <td> {{detail.reason}}</td>
                         <td> {{detail.email}}</td>
-                        <td>Delete</td>
+                        <td><button type="button" (click)='deleteReg(detail.id)'>Delete</button></td>
                     </tr>
                 </tbody>
             </table>

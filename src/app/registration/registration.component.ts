@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { RegistrationService } from './service/registration.service';
-import { Registration } from './model/registration';
+import { Employee } from './model/registration';
+import { Observable } from "rxjs";
 
 @Component({
   selector: 'app-registration',
@@ -10,14 +11,14 @@ import { Registration } from './model/registration';
 })
 export class RegistrationComponent implements OnInit{
 
-  registrationDetails:Registration[]=[];
+  registrationDetails:Employee[]=[];
    
   constructor(readonly registrationService:RegistrationService){
 
   }
   
   ngOnInit(): void {
-   this.registrationDetails= this.registrationService.getRegistrationDetails();
+    this.registrationService.getRegistrationDetails();
     
   }
  
@@ -26,5 +27,10 @@ export class RegistrationComponent implements OnInit{
     this.registrationService.createRegistrationDetails(registrationForm);
 
   }
+  
+  deleteReg(id:string){
+     this.registrationService.DeleteReg(id);
+     
+   }
 
 }

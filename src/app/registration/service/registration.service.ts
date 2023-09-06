@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { Registration } from "../model/registration";
+import { Employee } from "../model/registration";
 
 @Injectable({
     providedIn: 'root'
@@ -12,26 +12,30 @@ export class RegistrationService{
     }
     createRegistrationDetails(registrationForm:any):Observable<any>{
         console.log(registrationForm.value);
-       return  this.http.post("http://localhost:8080/register",registrationForm.value);
+       return  this.http.post("http://18.130.109.125:8080/employee",registrationForm.value);
        
     }
-   // getRegistrationDetails():Observable<Registration[]>{
+   getRegistrationDetails():Observable<Employee[]>{
         
-      // return  this.http.get<Registration[]>("http://localhost:8080/register");
+       return  this.http.get<Employee[]>("http://18.130.109.125:8080/employee");
        
-  //  }
+    }
+  DeleteReg(id:string){
+    console.log(id);
+    return this.http.delete("http://18.130.109.125:8080/employee/"+id);
+  }
 
-    getRegistrationDetails():Registration[]{
-        let  registrationList: Registration[];
-           registrationList = [
-            { firstname: "sree", lastname: 'Dr.sree',  employyeeno:"5802431",  toatlgems:"100", reason:"client appreciation", email:"sreenivasulu.anam@lxyz.com"},
-            { firstname: "sree", lastname: 'reddy',employyeeno:"5802431",  toatlgems:"100", reason:"client appreciation", email:"sreenivasulu.anam@xyz.com" },
-            { firstname: "sree", lastname: 'anam',employyeeno:"5802431",  toatlgems:"100", reason:"client appreciation", email:"sreenivasulu.anam@xyz.com" }
+   // getRegistrationDetails():Employee[]{
+      //  let  registrationList: Employee[];
+      //     registrationList = [
+        //    { id:"1",firstName: "sree", lastName: "Dr.sree", employyeeNo:"5802431",  toatlGems:"100", reason:"client appreciation", email:"sreenivasulu.anam@lxyz.com"},
+        //    { id:"2",firstName: "sree", lastName: 'reddy',employyeeNo:"5802431",  toatlGems:"100", reason:"client appreciation", email:"sreenivasulu.anam@xyz.com" },
+        //    {id:"3", firstName: "sree", lastName: 'anam',employyeeNo:"5802431",  toatlGems:"100", reason:"client appreciation", email:"sreenivasulu.anam@xyz.com" }
             
            
-          ];
-          return registrationList;
+       //   ];
+        //  return registrationList;
         
-     }
+  //   }
 
 }
