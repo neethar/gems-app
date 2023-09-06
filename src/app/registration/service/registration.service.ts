@@ -12,17 +12,17 @@ export class RegistrationService{
     }
     createRegistrationDetails(registrationForm:any):Observable<any>{
         console.log(registrationForm.value);
-       return  this.http.post("http://18.130.109.125:8080/employee",registrationForm.value);
+       return  this.http.post("http://18.130.109.125:8081/employee",registrationForm.value);
        
     }
    getRegistrationDetails():Observable<Employee[]>{
         
-       return  this.http.get<Employee[]>("http://18.130.109.125:8080/employee");
+       return  this.http.get<Employee[]>("http://18.130.109.125:8081/employee");
        
     }
   DeleteReg(id:string){
     console.log(id);
-    return this.http.delete("http://18.130.109.125:8080/employee/"+id);
+    return this.http.delete("http://18.130.109.125:8081/employee/"+id);
   }
 
    // getRegistrationDetails():Employee[]{
