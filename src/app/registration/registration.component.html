@@ -1,5 +1,5 @@
 
-<form #registrationForm="ngForm"  (ngSubmit)="onSubmit(registrationForm)">
+<form #registrationForm="ngForm">
  
     <div class="row">
     <p>
@@ -13,12 +13,12 @@
     </p>
 </div>
     <p>
-        <label for="employyeeNo">Employee No</label>
-        <input type="text" id="employyeeNo" name="employyeeNo" ngModel>
+        <label for="employeeNo">Employee No</label>
+        <input type="text" id="employeeNo" name="employeeNo" ngModel>
     </p>
     <p>
-        <label for="toatlGems">Tota Gems</label>
-        <input type="text" id="toatlGems" name="toatlGems" ngModel>
+        <label for="totalGems">Tota Gems</label>
+        <input type="text" id="totalGems" name="totalGems" ngModel>
     </p>
     <p>
         <label for="reason">Reason</label>
@@ -32,7 +32,7 @@
    
       
     <p>
-      <button type="submit">Submit</button>
+      <button type="button" (click)="onSubmit(registrationForm)">Register</button>
     </p>
 
     <div> Employee Details</div>
@@ -56,8 +56,8 @@
                     <tr *ngFor="let detail of registrationDetails;">
                         <td> {{detail.firstName}}</td>
                         <td> {{detail.lastName}}</td>
-                        <td> {{detail.employyeeNo}}</td>
-                        <td> {{detail.toatlGems}}</td>
+                        <td> {{detail.employeeNo}}</td>
+                        <td> {{detail.totalGems}}</td>
                         <td> {{detail.reason}}</td>
                         <td> {{detail.email}}</td>
                         <td><button type="button" (click)='deleteReg(detail.id)'>Delete</button></td>

@@ -19,18 +19,36 @@ export class RegistrationComponent implements OnInit{
   
   ngOnInit(): void {
     this.registrationService.getRegistrationDetails();
+   
+    this.registrationService.getRegistrationDetails().subscribe(
+      posts => {
+       
+        this.registrationDetails = posts;
+        console.log("loaded posts 2",this.registrationDetails)
+      },
+      error => {
+       
+        
+        console.log(error);
+      }
+    );
     
   }
  
   onSubmit(registrationForm:any){
     console.log(registrationForm.value);
-    this.registrationService.createRegistrationDetails(registrationForm);
+    this.registrationService.createRegistrationDetails(registrationForm.value).subscribe(data => {
+      console.log(data);
+    });
 
   }
   
+  
   deleteReg(id:string){
-     this.registrationService.DeleteReg(id);
-     
+     this.registrationService.DeleteReg(id).subscribe(data => {
+      console.log(data);
+      this.registrationDetails = this.registrationDetails.filter(reg => reg.id !==id);
+    });
    }
 
 }

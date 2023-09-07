@@ -1,18 +1,25 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient,HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Employee } from "../model/registration";
+
 
 @Injectable({
     providedIn: 'root'
   })
 export class RegistrationService{
-    constructor(readonly http:HttpClient){
-
+  private _headers: HttpHeaders;
+ 
+    constructor(public http:HttpClient){
+      this._headers = new HttpHeaders()
+      .set('Content-type', 'application/json',)
+      .set('Accept', 'application/json');
     }
+
     createRegistrationDetails(registrationForm:any):Observable<any>{
-        console.log(registrationForm.value);
-       return  this.http.post("http://18.130.109.125:8081/employee",registrationForm.value);
+        console.log(registrationForm);
+       return this.http.post("http://18.130.109.125:8081/employee", registrationForm);
+      // return  this.http.post("http://18.130.109.125:8081/employee",registrationForm.value);
        
     }
    getRegistrationDetails():Observable<Employee[]>{
