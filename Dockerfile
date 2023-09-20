@@ -1,7 +1,9 @@
-FROM node:alpine
-WORKDIR '/app'
-COPY package.json ./
+FROM node:latest as build
+WORKDIR /usr/local/app/
+COPY ./ ./usr/local/app/
 RUN npm install
-COPY . .
+RUN npm run build
+
+FROM nginx:latest
+COPY --from=build /usr/local/app/dist/gems-app /usr/share/nginx/html
 EXPOSE 4200
-CMD npm run start
